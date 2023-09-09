@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обучение в Китае</title>
+    <style>
+        body {
+            background-image: url('china-wallpaper.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 10px;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+        footer{
+            min-height:100%;
+        }
+    </style>
+    <style>
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>Обучение в Китае</h1>
+</header>
+
+<div th:each="el : ${users}" class="alert alert-info mt-2">
+    <h3 th:text="${el.name}"/>
+</div>
+
+<nav>
+    <a href="aboutus">О нас</a>
+    <a href="kursi">Курсы</a>
+    <a href="contacts">Контакты</a>
+</nav>
+
+<section id="about">
+    <h2>О нас</h2>
+    <p>Мы предлагаем уникальные возможности для обучения в Китае. Наши программы включают изучение китайского языка, культуры и многого другого. Присоединяйтесь к нам и расширьте свои горизонты!</p>
+</section>
+
+<section id="application">
+    <button onclick="openModal()">Оставьте свою заявку</button>
+</section>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <form method="post" action="/usersbd">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        document.body.classList.add("modal-open");
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    }
+</script>
+
+<section id="courses">
+    <h2>Курсы</h2>
+    <ul>
+        <li>Интенсивный курс китайского языка</li>
+        <li>Курскитайской культуры и искусства</li>
+        <li>Бизнес-курс в Китае</li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Контакты</h2>
+    <p>Свяжитесь с нами, чтобы узнать больше о наших программах и возможностях обучения в Китае.</p>
+    <p>Телефон: +123456789</p>
+    <p>Email: info@example.com</p>
+</section>
+
+<footer>
+    <p>&copy; 2021 Обучение в Китае. Все права защищены.</p>
+</footer>
+</body>
+</html>
